@@ -1,0 +1,57 @@
+Feature: Product Search and Purchase
+
+    Background: As a customer of an online store, 
+    I want to search for and purchase a product, 
+    in order to complete the purchase and receive the product.
+
+    Scenario Outline:
+
+    Given I have access to the website of my favorite online store
+    And I have selected a product that I want to buy
+    And I have a user account in the store
+
+        Steps:
+
+        Search for the product:
+
+        Given I enter the product name in the search bar
+        When I click the "Search" button
+        Then the search results list displays products matching the entered phrase
+        And I select the product I want to buy
+
+        Add the product to the cart:
+
+        Given I click the "Add to Cart" button
+        When the product is added to the cart
+        Then the cart icon displays the number of added products
+
+        Review the cart:
+
+        Given I click the cart icon
+        When the cart displays a list of added products, their prices, and the total amount
+        Then I can edit the quantity of products in the cart
+        And I can remove products from the cart
+
+        Proceed to checkout:
+
+        Given I click the "Proceed to Checkout" button
+        When I am redirected to the checkout page
+
+        Fill in shipping information:
+
+        Given I enter my address information
+        When I select the shipping method
+        And I choose the payment method
+
+        Confirm the purchase:
+
+        Given I review the order
+        When I verify the accuracy of the information
+        And I accept the store's terms and conditions
+        Then I click the "Confirm Purchase" button
+
+        Validate the purchase:
+
+        Given I receive a purchase confirmation via email
+        When the purchase is visible in my account's order history
+        Then the product is shipped to the specified address
